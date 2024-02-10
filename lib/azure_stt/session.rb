@@ -36,11 +36,12 @@ module AzureSTT
     #
     # @return [Models::Transcription] The transcription
     #
-    def create_transcription(content_urls:, properties:, locale:, display_name:)
+    def create_transcription(content_urls:, properties:, locale:, display_name:, model: nil)
       transcription_hash = client.create_transcription(
         contentUrls: content_urls,
         properties: properties,
         locale: locale,
+        model: model,
         displayName: display_name
       )
       build_transcription_from_hash(transcription_hash)
